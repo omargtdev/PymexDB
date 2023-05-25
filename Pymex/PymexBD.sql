@@ -56,16 +56,13 @@ GO
 CREATE SCHEMA [personas];
 GO
 
-CREATE TABLE [personas].[TipoDocumento] (
-	TipoDocumentoID TINYINT PRIMARY KEY IDENTITY(1, 1),
-	Descripcion VARCHAR(30) NOT NULL
-);
-GO
+
+-- Se usara tipo documento como un Enum (1 = RUC, 2 = DNI)
 
 -- Solo Personas Juridicas (Empresas, organizacion, etc)
 CREATE TABLE [personas].[Proveedor] (
 	ProveedorID INT PRIMARY KEY IDENTITY(1, 1),
-	TipoDocumentoID TINYINT NOT NULL REFERENCES [personas].[TipoDocumento] (TipoDocumentoID), -- (RUC)
+	TipoDocumento TINYINT NOT NULL,
 	NumeroDocumento VARCHAR(20) NOT NULL UNIQUE,
 	NombreCompleto NVARCHAR(100) NOT NULL,
 
@@ -79,7 +76,7 @@ GO
 -- Persona juridica y natural
 CREATE TABLE [personas].[Cliente] (
 	ClienteID INT PRIMARY KEY IDENTITY(1, 1),
-	TipoDocumentoID TINYINT NOT NULL REFERENCES [personas].[TipoDocumento] (TipoDocumentoID),
+	TipoDocumento TINYINT NOT NULL,
 	NumeroDocumento VARCHAR(20) NOT NULL UNIQUE,
 	NombreCompleto NVARCHAR(100) NOT NULL,
 
@@ -102,9 +99,13 @@ GO
 
 CREATE TABLE [productos].[Almacen] (
 	AlmacenID SMALLINT PRIMARY KEY IDENTITY(1001, 1),
-	Descripcion VARCHAR(30) NOT NULL
+	Descripcion VARCHAR(30) NOT NULL,
+	Direccion VARCHAR(200) NOT NULL,
+	Telefono VARCHAR(15),
+	UsuarioResponsable NVARCHAR(30)
 );
 GO
+
 
 CREATE TABLE [productos].[Producto] (
 	ProductoID INT PRIMARY KEY IDENTITY(1, 1),
@@ -181,7 +182,6 @@ CREATE TABLE [productos].[LogProducto] (
 	Codigo CHAR(8),
 	Descripcion VARCHAR(50),
 	CategoriaID INT,
-	CategoriaDescripcion VARCHAR(30),
 	AlmacenID INT,
 	AlmacenDescripcion VARCHAR(30),
 	UltimoPrecioCompra MONEY,
@@ -201,8 +201,7 @@ GO
 CREATE TABLE [personas].[LogProveedor] (
 	LogID BIGINT PRIMARY KEY IDENTITY(1, 1),
 	ProveedorID INT,
-	TipoDocumentoID TINYINT,
-	TipoDocumentoDescripcion VARCHAR(30),
+	TipoDocumento TINYINT,
 	NumeroDocumento VARCHAR(20),
 	NombreCompleto VARCHAR(100),
 	FechaRegistro DATETIME,
@@ -219,8 +218,7 @@ GO
 CREATE TABLE [personas].[LogCliente] (
 	LogID BIGINT PRIMARY KEY IDENTITY(1, 1),
 	ClienteID INT,
-	TipoDocumentoID TINYINT,
-	TipoDocumentoDescripcion VARCHAR(30),
+	TipoDocumento TINYINT,
 	NumeroDocumento VARCHAR(20),
 	NombreCompleto VARCHAR(100),
 	FechaRegistro DATETIME,

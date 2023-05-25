@@ -40,15 +40,14 @@ AFTER INSERT
 AS
 BEGIN
 	INSERT INTO [personas].[LogCliente]
-		(ClienteID, TipoDocumentoID, TipoDocumentoDescripcion,  NumeroDocumento, NombreCompleto, FechaRegistro, 
+		(ClienteID, TipoDocumento,  NumeroDocumento, NombreCompleto, FechaRegistro, 
 		 UsuarioRegistro, FechaModificacion, UltimoUsuarioModifico, 
 		 Accion, FechaAccion)
 	SELECT 
-		C.ClienteID, C.TipoDocumentoID, TD.Descripcion, C.NumeroDocumento, C.NombreCompleto, C.FechaRegistro,
+		C.ClienteID, C.TipoDocumento, C.NumeroDocumento, C.NombreCompleto, C.FechaRegistro,
 		C.UsuarioRegistro, C.FechaModificacion, C.UltimoUsuarioModifico, 
 		'INSERT', GETDATE()
 	FROM inserted C
-	JOIN [personas].[TipoDocumento] TD ON (TD.TipoDocumentoID = C.TipoDocumentoID);
 END
 GO
 
@@ -59,27 +58,25 @@ AS
 BEGIN
 	-- Antes del update
 	INSERT INTO [personas].[LogCliente]
-		(ClienteID, TipoDocumentoID, TipoDocumentoDescripcion,  NumeroDocumento, NombreCompleto, FechaRegistro, 
+		(ClienteID, TipoDocumento,  NumeroDocumento, NombreCompleto, FechaRegistro, 
 		 UsuarioRegistro, FechaModificacion, UltimoUsuarioModifico, 
 		 Accion, FechaAccion)
 	SELECT 
-		C.ClienteID, C.TipoDocumentoID, TD.Descripcion, C.NumeroDocumento, C.NombreCompleto, C.FechaRegistro,
+		C.ClienteID, C.TipoDocumento, C.NumeroDocumento, C.NombreCompleto, C.FechaRegistro,
 		C.UsuarioRegistro, C.FechaModificacion, C.UltimoUsuarioModifico, 
 		'BEFORE UPD', GETDATE()
 	FROM deleted C
-	JOIN [personas].[TipoDocumento] TD ON (TD.TipoDocumentoID = C.TipoDocumentoID);
 
 		-- Con el update
 	INSERT INTO [personas].[LogCliente]
-		(ClienteID, TipoDocumentoID, TipoDocumentoDescripcion,  NumeroDocumento, NombreCompleto, FechaRegistro, 
+		(ClienteID, TipoDocumento,  NumeroDocumento, NombreCompleto, FechaRegistro, 
 		 UsuarioRegistro, FechaModificacion, UltimoUsuarioModifico, 
 		 Accion, UpdateReference, FechaAccion)
 	SELECT 
-		C.ClienteID, C.TipoDocumentoID, TD.Descripcion, C.NumeroDocumento, C.NombreCompleto, C.FechaRegistro,
+		C.ClienteID, C.TipoDocumento, C.NumeroDocumento, C.NombreCompleto, C.FechaRegistro,
 		C.UsuarioRegistro, C.FechaModificacion, C.UltimoUsuarioModifico, 
 		'AFTER UPD', SCOPE_IDENTITY(), GETDATE()
 	FROM inserted C
-	JOIN [personas].[TipoDocumento] TD ON (TD.TipoDocumentoID = C.TipoDocumentoID);
 END
 GO
 
@@ -89,15 +86,14 @@ AFTER DELETE
 AS
 BEGIN
 	INSERT INTO [personas].[LogCliente]
-		(ClienteID, TipoDocumentoID, TipoDocumentoDescripcion,  NumeroDocumento, NombreCompleto, FechaRegistro, 
+		(ClienteID, TipoDocumento,  NumeroDocumento, NombreCompleto, FechaRegistro, 
 		 UsuarioRegistro, FechaModificacion, UltimoUsuarioModifico, 
 		 Accion, FechaAccion)
 	SELECT 
-		C.ClienteID, C.TipoDocumentoID, TD.Descripcion, C.NumeroDocumento, C.NombreCompleto, C.FechaRegistro,
+		C.ClienteID, C.TipoDocumento, C.NumeroDocumento, C.NombreCompleto, C.FechaRegistro,
 		C.UsuarioRegistro, C.FechaModificacion, C.UltimoUsuarioModifico, 
 		'DELETE', GETDATE()
 	FROM deleted C
-	JOIN [personas].[TipoDocumento] TD ON (TD.TipoDocumentoID = C.TipoDocumentoID);
 END
 GO
 
@@ -109,15 +105,14 @@ AFTER INSERT
 AS
 BEGIN
 	INSERT INTO [personas].[LogProveedor]
-			(ProveedorID, TipoDocumentoID, TipoDocumentoDescripcion,  NumeroDocumento, NombreCompleto, FechaRegistro, 
+			(ProveedorID, TipoDocumento,  NumeroDocumento, NombreCompleto, FechaRegistro, 
 			 UsuarioRegistro, FechaModificacion, UltimoUsuarioModifico, 
 			 Accion, FechaAccion)
 		SELECT 
-			P.ProveedorID, P.TipoDocumentoID, TD.Descripcion, P.NumeroDocumento, P.NombreCompleto, P.FechaRegistro,
+			P.ProveedorID, P.TipoDocumento, P.NumeroDocumento, P.NombreCompleto, P.FechaRegistro,
 			P.UsuarioRegistro, P.FechaModificacion, P.UltimoUsuarioModifico, 
 			'INSERT', GETDATE()
 	FROM inserted P
-	JOIN [personas].[TipoDocumento] TD ON (TD.TipoDocumentoID = P.TipoDocumentoID);
 END
 GO
 
@@ -129,27 +124,25 @@ AS
 BEGIN
 	-- Antes del update
 	INSERT INTO [personas].[LogProveedor]
-		(ProveedorID, TipoDocumentoID, TipoDocumentoDescripcion,  NumeroDocumento, NombreCompleto, FechaRegistro, 
-		 UsuarioRegistro, FechaModificacion, UltimoUsuarioModifico, 
-		 Accion, FechaAccion)
+			(ProveedorID, TipoDocumento,  NumeroDocumento, NombreCompleto, FechaRegistro, 
+			 UsuarioRegistro, FechaModificacion, UltimoUsuarioModifico, 
+			 Accion, FechaAccion)
 	SELECT 
-		P.ProveedorID, P.TipoDocumentoID, TD.Descripcion, P.NumeroDocumento, P.NombreCompleto, P.FechaRegistro,
+		P.ProveedorID, P.TipoDocumento, P.NumeroDocumento, P.NombreCompleto, P.FechaRegistro,
 		P.UsuarioRegistro, P.FechaModificacion, P.UltimoUsuarioModifico, 
 		'BEFORE UPD', GETDATE()
 	FROM deleted P
-	JOIN [personas].[TipoDocumento] TD ON (TD.TipoDocumentoID = P.TipoDocumentoID);
 
 		-- Con el update
 	INSERT INTO [personas].[LogProveedor]
-		(ProveedorID, TipoDocumentoID, TipoDocumentoDescripcion,  NumeroDocumento, NombreCompleto, FechaRegistro, 
+		(ProveedorID, TipoDocumento,  NumeroDocumento, NombreCompleto, FechaRegistro, 
 		 UsuarioRegistro, FechaModificacion, UltimoUsuarioModifico, 
 		 Accion, UpdateReference, FechaAccion)
 	SELECT 
-		P.ProveedorID, P.TipoDocumentoID, TD.Descripcion, P.NumeroDocumento, P.NombreCompleto, P.FechaRegistro,
+		P.ProveedorID, P.TipoDocumento, P.NumeroDocumento, P.NombreCompleto, P.FechaRegistro,
 		P.UsuarioRegistro, P.FechaModificacion, P.UltimoUsuarioModifico, 
 		'AFTER UPD', SCOPE_IDENTITY(), GETDATE()
 	FROM inserted P
-	JOIN [personas].[TipoDocumento] TD ON (TD.TipoDocumentoID = P.TipoDocumentoID);
 END
 GO
 
@@ -159,15 +152,14 @@ AFTER DELETE
 AS
 BEGIN
 	INSERT INTO [personas].[LogProveedor]
-		(ProveedorID, TipoDocumentoID, TipoDocumentoDescripcion,  NumeroDocumento, NombreCompleto, FechaRegistro, 
-		 UsuarioRegistro, FechaModificacion, UltimoUsuarioModifico, 
-		 Accion, FechaAccion)
+			(ProveedorID, TipoDocumento,  NumeroDocumento, NombreCompleto, FechaRegistro, 
+			 UsuarioRegistro, FechaModificacion, UltimoUsuarioModifico, 
+			 Accion, FechaAccion)
 	SELECT 
-		P.ProveedorID, P.TipoDocumentoID, TD.Descripcion, P.NumeroDocumento, P.NombreCompleto, P.FechaRegistro,
+		P.ProveedorID, P.TipoDocumento, P.NumeroDocumento, P.NombreCompleto, P.FechaRegistro,
 		P.UsuarioRegistro, P.FechaModificacion, P.UltimoUsuarioModifico, 
 		'DELETE', GETDATE()
 	FROM deleted P
-	JOIN [personas].[TipoDocumento] TD ON (TD.TipoDocumentoID = P.TipoDocumentoID);
 END
 GO
 
@@ -179,16 +171,14 @@ AFTER INSERT
 AS
 BEGIN
 	INSERT INTO [productos].[LogProducto]
-			(ProductoID, Codigo, Descripcion,  CategoriaID, CategoriaDescripcion, AlmacenID, AlmacenDescripcion,
+			(ProductoID, Codigo, Descripcion,  CategoriaID, AlmacenID,
 			 UltimoPrecioCompra, UltimoPrecioVenta, Stock, FechaRegistro, UsuarioRegistro, FechaModificacion, UltimoUsuarioModifico,
 			 Accion, FechaAccion)
 		SELECT 
-			P.ProductoID, P.Codigo, P.Descripcion, P.CategoriaID, C.Descripcion, P.AlmacenID, A.Descripcion,
+			P.ProductoID, P.Codigo, P.Descripcion, P.CategoriaID, P.AlmacenID,
 			P.UltimoPrecioCompra, P.UltimoPrecioVenta, P.Stock, P.FechaRegistro, P.UsuarioRegistro, P.FechaModificacion, P.UltimoUsuarioModifico,
 			'INSERT', GETDATE()
 	FROM inserted P
-	JOIN [productos].[Almacen] A ON (A.AlmacenID = P.AlmacenID)
-	JOIN [productos].[Categoria] C ON (C.CategoriaID = P.CategoriaID);
 END
 GO
 
@@ -199,29 +189,25 @@ AS
 BEGIN
 	-- Antes del update
 	INSERT INTO [productos].[LogProducto]
-			(ProductoID, Codigo, Descripcion,  CategoriaID, CategoriaDescripcion, AlmacenID, AlmacenDescripcion,
+			(ProductoID, Codigo, Descripcion,  CategoriaID, AlmacenID,
 			 UltimoPrecioCompra, UltimoPrecioVenta, Stock, FechaRegistro, UsuarioRegistro, FechaModificacion, UltimoUsuarioModifico,
 			 Accion, FechaAccion)
 		SELECT 
-			P.ProductoID, P.Codigo, P.Descripcion, P.CategoriaID, C.Descripcion, P.AlmacenID, A.Descripcion,
+			P.ProductoID, P.Codigo, P.Descripcion, P.CategoriaID, P.AlmacenID,
 			P.UltimoPrecioCompra, P.UltimoPrecioVenta, P.Stock, P.FechaRegistro, P.UsuarioRegistro, P.FechaModificacion, P.UltimoUsuarioModifico,
 			'BEFORE UPD', GETDATE()
 	FROM deleted P
-	JOIN [productos].[Almacen] A ON (A.AlmacenID = P.AlmacenID)
-	JOIN [productos].[Categoria] C ON (C.CategoriaID = P.CategoriaID);
 
 	-- Con el update
 	INSERT INTO [productos].[LogProducto]
-			(ProductoID, Codigo, Descripcion,  CategoriaID, CategoriaDescripcion, AlmacenID, AlmacenDescripcion,
+			(ProductoID, Codigo, Descripcion,  CategoriaID, AlmacenID,
 			 UltimoPrecioCompra, UltimoPrecioVenta, Stock, FechaRegistro, UsuarioRegistro, FechaModificacion, UltimoUsuarioModifico,
 			 Accion, UpdateReference, FechaAccion)
 		SELECT 
-			P.ProductoID, P.Codigo, P.Descripcion, P.CategoriaID, C.Descripcion, P.AlmacenID, A.Descripcion,
+			P.ProductoID, P.Codigo, P.Descripcion, P.CategoriaID, P.AlmacenID,
 			P.UltimoPrecioCompra, P.UltimoPrecioVenta, P.Stock, P.FechaRegistro, P.UsuarioRegistro, P.FechaModificacion, P.UltimoUsuarioModifico,
 			'AFTER UPD', SCOPE_IDENTITY(), GETDATE()
 	FROM inserted P
-	JOIN [productos].[Almacen] A ON (A.AlmacenID = P.AlmacenID)
-	JOIN [productos].[Categoria] C ON (C.CategoriaID = P.CategoriaID);
 END
 GO
 
@@ -231,16 +217,14 @@ AFTER DELETE
 AS
 BEGIN
 	INSERT INTO [productos].[LogProducto]
-			(ProductoID, Codigo, Descripcion,  CategoriaID, CategoriaDescripcion, AlmacenID, AlmacenDescripcion,
+			(ProductoID, Codigo, Descripcion,  CategoriaID, AlmacenID,
 			 UltimoPrecioCompra, UltimoPrecioVenta, Stock, FechaRegistro, UsuarioRegistro, FechaModificacion, UltimoUsuarioModifico,
 			 Accion, FechaAccion)
 		SELECT 
-			P.ProductoID, P.Codigo, P.Descripcion, P.CategoriaID, C.Descripcion, P.AlmacenID, A.Descripcion,
+			P.ProductoID, P.Codigo, P.Descripcion, P.CategoriaID, P.AlmacenID,
 			P.UltimoPrecioCompra, P.UltimoPrecioVenta, P.Stock, P.FechaRegistro, P.UsuarioRegistro, P.FechaModificacion, P.UltimoUsuarioModifico,
 			'DELETE', GETDATE()
 	FROM deleted P
-	JOIN [productos].[Almacen] A ON (A.AlmacenID = P.AlmacenID)
-	JOIN [productos].[Categoria] C ON (C.CategoriaID = P.CategoriaID);
 END
 GO
 
