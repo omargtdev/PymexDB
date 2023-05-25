@@ -11,3 +11,7 @@ but you can open with others editors, at least the .sql files.
 ### What changes in each commit?
 
 You can check it in the [CHANGELOG](CHANGELOG.md) file. (It's in Spanish)
+
+### MDF/LDF
+
+You can import the database as MDF. Check inside (DATA)[./DATA/] folder.

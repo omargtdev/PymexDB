@@ -1,1 +1,5 @@
 .vs/
+
+# Only consider the zip
+DATA/*.ldf
+DATA/*.mdf
