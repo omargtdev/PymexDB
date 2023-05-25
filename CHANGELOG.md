@@ -47,3 +47,21 @@
 
 ### inventarios
 `new` usp_GenerarCodigo -> Genero un codigo para una entrada o salida
+
+## Triggers
+
+### configuraciones
+`new` trg_datosSistema -> Validar que solo exista un registro (UPSERT) a la tabla `Configuraciones`
+
+### personas
+`new` trg_logClienteInsert -> Log de insert en la tabla LogCliente
+`new` trg_logClienteUpdate-> Log de update en la tabla LogCliente
+`new` trg_logClienteDelete-> Log de delete en la tabla LogCliente
+`new` trg_logProveedorInsert -> Log de insert en la tabla LogProveedor
+`new` trg_logProveedorUpdate-> Log de update en la tabla LogProveedor
+`new` trg_logProveedorDelete-> Log de delete en la tabla LogProveedor
+
+### productos
+`new` trg_logProductoInsert -> Log de insert en la tabla LogProducto
+`new` trg_logProductoUpdate-> Log de update en la tabla LogProducto
+`new` trg_logProductoDelete-> Log de delete en la tabla LogProducto
