@@ -132,7 +132,7 @@ CREATE TABLE [inventarios].[Entrada] (
 	EntradaID INT PRIMARY KEY IDENTITY(1, 1),
 	Codigo CHAR(8) NOT NULL UNIQUE, -- Auto generado (con una funcion)
 	FechaRegistro DATE NOT NULL,
-	ProveedorID INT NOT NULL REFERENCES [personas].[Proveedor] (ProveedorID),
+	ProveedorID INT NOT NULL, --REFERENCES [personas].[Proveedor] (ProveedorID),
 	UsuarioRegistro NVARCHAR(30) NOT NULL,
 	FechaHoraRegistro DATETIME NOT NULL DEFAULT GETDATE()
 
@@ -144,7 +144,7 @@ GO
 CREATE TABLE [inventarios].[EntradaProducto] (
 	EntradaProductoID INT IDENTITY(1, 1),
 	EntradaID INT NOT NULL REFERENCES [inventarios].[Entrada] (EntradaID),
-	ProductoID INT NOT NULL REFERENCES [productos].[Producto] (ProductoID),
+	ProductoID INT NOT NULL, --REFERENCES [productos].[Producto] (ProductoID),
 	PrecioCompraUnidad MONEY NOT NULL,
 	PrecioVentaUnidad MONEY NOT NULL,
 	Cantidad INT NOT NULL,
@@ -157,7 +157,7 @@ CREATE TABLE [inventarios].[Salida] (
 	SalidaID  INT PRIMARY KEY IDENTITY(1, 1),
 	Codigo CHAR(8) NOT NULL UNIQUE, -- Auto generado (con una funcion)
 	FechaRegistro DATE NOT NULL,
-	ClienteID INT NOT NULL REFERENCES [personas].[Cliente] (ClienteID),
+	ClienteID INT NOT NULL, --REFERENCES [personas].[Cliente] (ClienteID),
 	UsuarioRegistro NVARCHAR(30) NOT NULL,
 	FechaHoraRegistro DATETIME NOT NULL DEFAULT GETDATE()
 );
@@ -166,7 +166,7 @@ GO
 CREATE TABLE [inventarios].[SalidaProducto] (
 	SalidaProductoID INT IDENTITY(1, 1),
 	SalidaID INT REFERENCES [inventarios].[Salida] (SalidaID),
-	ProductoID INT NOT NULL REFERENCES [productos].[Producto] (ProductoID),
+	ProductoID INT NOT NULL, --REFERENCES [productos].[Producto] (ProductoID),
 	PrecioVentaUnidad MONEY NOT NULL,
 	Cantidad INT NOT NULL,
 	PRIMARY KEY (SalidaProductoID, SalidaID)

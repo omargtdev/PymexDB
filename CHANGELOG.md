@@ -1,3 +1,13 @@
+# Pymex (2023-05-27)
+
+## Tablas
+
+### inventarios
+- `Entrada` -> Se quito la FK con referencia a Proveedor
+- `EntradaProducto` -> Se quito la FK con referencia a Producto
+- `Salida` -> Se quito la FK con referencia a Cliente
+- `SalidaProducto` -> Se quito la FK con referencia a Producto
+
 # Pymex (2023-05-25)
 
 ## Tablas
