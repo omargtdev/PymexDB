@@ -1,3 +1,10 @@
+# Pymex (2023-06-16)
+
+## Tablas
+
+### dbo
+- `modified` Usuario -> Se cambio el tipo de dato de Clave por varchar(256) (Para almacenarlo encriptado con SHA256)
+
 # Pymex (2023-05-27)
 
 ## Tablas
