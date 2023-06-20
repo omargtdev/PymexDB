@@ -102,7 +102,7 @@ CREATE TABLE [productos].[Almacen] (
 	Descripcion VARCHAR(30) NOT NULL,
 	Direccion VARCHAR(200) NOT NULL,
 	Telefono VARCHAR(15),
-	UsuarioResponsable NVARCHAR(30)
+	Aforo INT
 );
 GO
 

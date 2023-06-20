@@ -1,3 +1,18 @@
+# Pymex (2023-06-20)
+
+## Tablas
+
+### productos
+- `modified` Almacen -> Se eliminó la columna UsuarioResponsable y se agregó la columna Aforo
+
+## Procedures
+
+### inventarios
+- `new` usp_ListarSalidas -> Lista las salidas con la información del cliente que lo realizó, incluyendo a clientes eliminados
+- `new` usp_ListarEntradas -> Lista las entradas con la información del proveedor que lo realizó, incluyendo a proveedores eliminados
+- `new` usp_BuscarEntradaPorCodigo -> Obtiene una entrada con todos sus datos por un código dado
+- `new` usp_BuscarSalidaPorCodigo -> Obtiene una salida con todos sus datos por un código dado
+
 # Pymex (2023-06-16)
 
 ## Tablas
