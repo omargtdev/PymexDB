@@ -1,3 +1,11 @@
+# Pymex (2023-06-21)
+
+## Tablas
+
+### productos
+- `modified` Producto -> Se agregó la columna Activo, para evitar eliminar productos
+
+
 # Pymex (2023-06-20)
 
 ## Tablas

@@ -113,6 +113,7 @@ CREATE TABLE [productos].[Producto] (
 	Descripcion VARCHAR(50) NOT NULL,
 	CategoriaID SMALLINT NOT NULL REFERENCES [productos].[Categoria] (CategoriaID),
 	AlmacenID SMALLINT NOT NULL REFERENCES [productos].[Almacen] (AlmacenID),
+	Activo BIT NOT NULL DEFAULT (1),
 	UltimoPrecioCompra MONEY,
 	UltimoPrecioVenta MONEY,
 	Stock INT DEFAULT 0,
