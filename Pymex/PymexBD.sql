@@ -145,7 +145,7 @@ GO
 CREATE TABLE [inventarios].[EntradaProducto] (
 	EntradaProductoID INT IDENTITY(1, 1),
 	EntradaID INT NOT NULL REFERENCES [inventarios].[Entrada] (EntradaID),
-	ProductoID INT NOT NULL, --REFERENCES [productos].[Producto] (ProductoID),
+	ProductoID INT NOT NULL, REFERENCES [productos].[Producto] (ProductoID),
 	PrecioCompraUnidad MONEY NOT NULL,
 	PrecioVentaUnidad MONEY NOT NULL,
 	Cantidad INT NOT NULL,
@@ -167,7 +167,7 @@ GO
 CREATE TABLE [inventarios].[SalidaProducto] (
 	SalidaProductoID INT IDENTITY(1, 1),
 	SalidaID INT REFERENCES [inventarios].[Salida] (SalidaID),
-	ProductoID INT NOT NULL, --REFERENCES [productos].[Producto] (ProductoID),
+	ProductoID INT NOT NULL, REFERENCES [productos].[Producto] (ProductoID),
 	PrecioVentaUnidad MONEY NOT NULL,
 	Cantidad INT NOT NULL,
 	PRIMARY KEY (SalidaProductoID, SalidaID)

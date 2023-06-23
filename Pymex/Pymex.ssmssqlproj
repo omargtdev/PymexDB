@@ -3,7 +3,7 @@
   <Items>
     <LogicalFolder Name="Connections" Type="2" Sorted="true">
       <Items>
-        <ConnectionNode Name="(local):DESKTOP-M7KERMN\omargt">
+        <ConnectionNode Name="(local):NASATOASTER\omarg">
           <Created>2023-06-19T15:00:07.8891203-05:00</Created>
           <Type>SQL</Type>
           <Server>(local)</Server>
@@ -15,13 +15,25 @@
           <ConnectionProtocol>NotSpecified</ConnectionProtocol>
           <ApplicationName />
         </ConnectionNode>
+        <ConnectionNode Name="NASATOASTER:NASATOASTER\omarg">
+          <Created>2023-06-23T11:23:11.0621006-05:00</Created>
+          <Type>SQL</Type>
+          <Server>NASATOASTER</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
       </Items>
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
         <FileNode Name="PymexBD.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:NASATOASTER:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>NASATOASTER</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>PymexBD.sql</FullPath>
         </FileNode>
@@ -32,8 +44,8 @@
           <FullPath>PymexFunctions.sql</FullPath>
         </FileNode>
         <FileNode Name="PymexStoreProcedures.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:NASATOASTER:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>NASATOASTER</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>PymexStoreProcedures.sql</FullPath>
         </FileNode>

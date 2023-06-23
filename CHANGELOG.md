@@ -2,9 +2,16 @@
 
 ## Tablas
 
+### inventarios
+- `modified` EntradaProducto -> Se agregó el constraint de FK (ProductoID) hacia Producto (ProductoID)
+- `modified` SalidaProducto -> Se agregó el constraint de FK (ProductoID) hacia Producto (ProductoID)
+
+# Pymex (2023-06-21)
+
+## Tablas
+
 ### productos
 - `modified` Producto -> Se agregó la columna Activo, para evitar eliminar productos
-
 
 # Pymex (2023-06-20)
 
